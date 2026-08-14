@@ -3,8 +3,8 @@
     "hero": "/assets/uploads/img_20260814_124717_285.jpg",
     "about": "/assets/uploads/img_20260814_124709_128.jpg",
     "showreel": "https://picsum.photos/seed/natalia-showreel-stage/1600/900",
-    "format1": "https://picsum.photos/seed/elegant-wedding-gala/900/620",
-    "format2": "https://picsum.photos/seed/corporate-gala-night/800/620"
+    "format1": "/assets/uploads/img_20260814_124709_739.jpg",
+    "format2": "/assets/uploads/img_20260814_124709_086.jpg"
   },
   "cases": [
     {
@@ -127,27 +127,27 @@
   ],
   "gallery": [
     {
-      "photo": "https://picsum.photos/seed/wedding-first-dance/520/650",
+      "photo": "/assets/uploads/img_20260814_124700_143.jpg",
       "caption": "первый танец, июнь"
     },
     {
-      "photo": "https://picsum.photos/seed/corporate-party-lights/520/650",
+      "photo": "/assets/uploads/img_20260814_124709_591.jpg",
       "caption": "гала-вечер компании"
     },
     {
-      "photo": "https://picsum.photos/seed/open-air-celebration/520/650",
+      "photo": "/assets/uploads/img_20260814_124700_577.jpg",
       "caption": "летняя церемония"
     },
     {
-      "photo": "https://picsum.photos/seed/anniversary-family-dinner/520/650",
+      "photo": "/assets/uploads/img_20260814_124700_310.jpg",
       "caption": "папин юбилей — 60"
     },
     {
-      "photo": "https://picsum.photos/seed/branded-launch-event/520/650",
+      "photo": "/assets/uploads/img_20260814_124700_141.jpg",
       "caption": "запуск бренда, NDA"
     },
     {
-      "photo": "https://picsum.photos/seed/confetti-finale-party/520/650",
+      "photo": "/assets/uploads/img_20260814_124709_868.jpg",
       "caption": "финал на миллион"
     }
   ],
