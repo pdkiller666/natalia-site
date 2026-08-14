@@ -1,19 +1,11 @@
 {
-    "photos": {
-    "hero": "https://picsum.photos/seed/natalia-host-portrait/900/1125",
+  "photos": {
+    "hero": "/assets/uploads/img_20260814_124717_285.jpg",
     "about": "https://picsum.photos/seed/natalia-on-stage-lights/800/1000",
     "showreel": "https://picsum.photos/seed/natalia-showreel-stage/1600/900",
     "format1": "https://picsum.photos/seed/elegant-wedding-gala/900/620",
     "format2": "https://picsum.photos/seed/corporate-gala-night/800/620"
   },
-  "gallery": [
-    {"photo": "https://picsum.photos/seed/wedding-first-dance/520/650", "caption": "первый танец, июнь"},
-    {"photo": "https://picsum.photos/seed/corporate-party-lights/520/650", "caption": "гала-вечер компании"},
-    {"photo": "https://picsum.photos/seed/open-air-celebration/520/650", "caption": "летняя церемония"},
-    {"photo": "https://picsum.photos/seed/anniversary-family-dinner/520/650", "caption": "папин юбилей — 60"},
-    {"photo": "https://picsum.photos/seed/branded-launch-event/520/650", "caption": "запуск бренда, NDA"},
-    {"photo": "https://picsum.photos/seed/confetti-finale-party/520/650", "caption": "финал на миллион"}
-  ],
   "cases": [
     {
       "title": "Свадьба на 180 гостей под открытым небом",
@@ -131,6 +123,32 @@
     {
       "title": "Тихий момент",
       "text": "Одна минута, когда зал замирает, свет приглушается, и главные люди слышат слова, которые запомнят навсегда."
+    }
+  ],
+  "gallery": [
+    {
+      "photo": "https://picsum.photos/seed/wedding-first-dance/520/650",
+      "caption": "первый танец, июнь"
+    },
+    {
+      "photo": "https://picsum.photos/seed/corporate-party-lights/520/650",
+      "caption": "гала-вечер компании"
+    },
+    {
+      "photo": "https://picsum.photos/seed/open-air-celebration/520/650",
+      "caption": "летняя церемония"
+    },
+    {
+      "photo": "https://picsum.photos/seed/anniversary-family-dinner/520/650",
+      "caption": "папин юбилей — 60"
+    },
+    {
+      "photo": "https://picsum.photos/seed/branded-launch-event/520/650",
+      "caption": "запуск бренда, NDA"
+    },
+    {
+      "photo": "https://picsum.photos/seed/confetti-finale-party/520/650",
+      "caption": "финал на миллион"
     }
   ],
   "contacts": {
