@@ -52,7 +52,7 @@
       "name": "Mansard Bar"
     }
   ],
-  "guarantee": "Если дата окажется занята — предложу альтернативу в течение 24 часов. Форс-мажор у меня — проверенная замена моего уровня и репетиция за мой счёт. Всё фиксируется в договоре.",
+  "guarantee": "Если дата окажется занята — предложу альтернативу в течение 24 часов. Форс-мажор у меня — проверенная замена моего уровня. Всё фиксируется в договоре.",
   "prices": [
     {
       "tag": "Базовый",
@@ -74,11 +74,11 @@
     }
   ],
   "about": {
-    "years": 12,
+    "years": 15,
     "quote": "«Хороший праздник — это когда на следующий день все спрашивают: где вы нашли эту ведущую?»",
     "stats": [
       {
-        "value": 12,
+        "value": 15,
         "suffix": "",
         "label": "лет в профессии"
       },
@@ -156,9 +156,9 @@
     "phoneHref": "+79619894489",
     "email": "zakhaarchenko27@gmail.com",
     "telegram": "https://t.me/natalie_tarasovaa",
-    "whatsapp": "#",
+    "whatsapp": "https://wa.me/message/PO6KYTIUM2ZAD1",
     "vk": "https://vk.ru/ntarasovaa27",
-    "instagram": "#"
+    "instagram": "https://www.instagram.com/natalie__tarasova"
   },
   "faq": [
     {
