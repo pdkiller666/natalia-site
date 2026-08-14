@@ -6,22 +6,6 @@ media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
-          - name: "photos"
-            label: "Фотографии"
-            widget: "object"
-            fields:
-              - {name: hero, label: "Портрет на главном (вертикальное 4:5)", widget: image, required: false}
-              - {name: about, label: "Фото «Обо мне» (вертикальное 4:5)", widget: image, required: false}
-              - {name: showreel, label: "Постер шоурила (16:9)", widget: image, required: false}
-              - {name: format1, label: "Формат «Свадьбы» (горизонтальное)", widget: image, required: false}
-              - {name: format2, label: "Формат «Корпоративы» (горизонтальное)", widget: image, required: false}
-          - name: "gallery"
-            label: "Галерея «Моменты»"
-            widget: list
-            summary: "{{fields.caption}}"
-            fields:
-              - {name: photo, label: "Фото (вертикальное 4:5)", widget: image, required: false}
-              - {name: caption, label: "Подпись", widget: string}
   - name: "content"
     label: "Контент сайта"
     description: "Изменяйте поля и нажимайте Publish — сайт обновится сам."
@@ -47,6 +31,22 @@ collections:
             fields:
               - {name: lead, label: "Подзаголовок", widget: text}
               - {name: availability, label: "Строка про сезон", widget: string}
+          - name: "photos"
+            label: "Фотографии"
+            widget: "object"
+            fields:
+              - {name: hero, label: "Портрет на главном (вертикальное 4:5)", widget: image, required: false}
+              - {name: about, label: "Фото «Обо мне» (вертикальное 4:5)", widget: image, required: false}
+              - {name: showreel, label: "Постер шоурила (16:9)", widget: image, required: false}
+              - {name: format1, label: "Формат «Свадьбы» (горизонтальное)", widget: image, required: false}
+              - {name: format2, label: "Формат «Корпоративы» (горизонтальное)", widget: image, required: false}
+          - name: "gallery"
+            label: "Галерея «Моменты»"
+            widget: list
+            summary: "{{fields.caption}}"
+            fields:
+              - {name: photo, label: "Фото (вертикальное 4:5)", widget: image, required: false}
+              - {name: caption, label: "Подпись", widget: string}
           - name: "about"
             label: "Обо мне"
             widget: "object"
