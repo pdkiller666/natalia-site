@@ -1,0 +1,103 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "content"
+    label: "Контент сайта"
+    description: "Изменяйте поля и нажимайте Publish — сайт обновится сам."
+    files:
+      - name: "site"
+        label: "Весь контент"
+        file: "content/site.json"
+        fields:
+          - name: "contacts"
+            label: "Контакты"
+            widget: "object"
+            fields:
+              - {name: phone, label: "Телефон (как показывать)", widget: string}
+              - {name: phoneHref, label: "Телефон для ссылки (+7…)", widget: string}
+              - {name: email, label: Email, widget: string}
+              - {name: telegram, label: "Ссылка Telegram", widget: string}
+              - {name: whatsapp, label: "Ссылка WhatsApp", widget: string}
+              - {name: vk, label: "Ссылка VK", widget: string, required: false}
+              - {name: instagram, label: "Ссылка Instagram", widget: string, required: false}
+          - name: "hero"
+            label: "Главный экран"
+            widget: "object"
+            fields:
+              - {name: lead, label: "Подзаголовок", widget: text}
+              - {name: availability, label: "Строка про сезон", widget: string}
+          - name: "about"
+            label: "Обо мне"
+            widget: "object"
+            fields:
+              - {name: years, label: "Лет на сцене (бейдж)", widget: number}
+              - {name: quote, label: "Цитата", widget: text}
+              - name: stats
+                label: "Цифры"
+                widget: list
+                fields:
+                  - {name: value, label: "Число", widget: number}
+                  - {name: suffix, label: "Суффикс (например +)", widget: string, required: false}
+                  - {name: label, label: "Подпись", widget: string}
+          - {name: guarantee, label: "Текст гарантии", widget: text}
+          - name: prices
+            label: "Пакеты и цены"
+            widget: list
+            summary: "{{fields.name}} — {{fields.price}}"
+            fields:
+              - {name: tag, label: "Ярлык", widget: string}
+              - {name: name, label: "Название", widget: string}
+              - {name: desc, label: "Описание", widget: text}
+              - {name: price, label: "Цена", widget: string}
+          - name: team
+            label: "Команда"
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - {name: photo, label: "Фото", widget: image, required: false}
+              - {name: name, label: "Имя и роль", widget: string}
+              - {name: role, label: "Описание", widget: string}
+          - name: cases
+            label: "Кейсы"
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - {name: title, label: "Заголовок", widget: string}
+              - {name: task, label: "Задача", widget: text}
+              - {name: solution, label: "Решение", widget: text}
+              - {name: result, label: "Результат крупно", widget: string}
+              - {name: result_note, label: "Подпись под результатом", widget: string}
+              - {name: meta, label: "Мета", widget: string}
+          - name: rituals
+            label: "Фирменные ритуалы"
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - {name: title, label: "Название", widget: string}
+              - {name: text, label: "Описание", widget: text}
+          - name: reviews
+            label: "Отзывы"
+            widget: list
+            summary: "{{fields.author}}"
+            fields:
+              - {name: avatar, label: "Аватар", widget: image, required: false}
+              - {name: text, label: "Текст отзыва", widget: text}
+              - {name: author, label: "Автор", widget: string}
+              - {name: event, label: "Событие", widget: string}
+              - {name: source, label: "Источник", widget: string}
+          - name: logos
+            label: "Площадки"
+            widget: list
+            field: {name: name, label: "Название", widget: string}
+          - name: faq
+            label: "Вопросы и ответы"
+            widget: list
+            summary: "{{fields.q}}"
+            fields:
+              - {name: q, label: "Вопрос", widget: string}
+              - {name: a, label: "Ответ", widget: text}

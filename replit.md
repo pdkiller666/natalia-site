@@ -7,6 +7,7 @@
 - Чистый HTML/CSS/JS — один файл `index.html`, без сборщиков и зависимостей
 - Шрифты: Playfair Display + Manrope (Google Fonts)
 - Деплой на GitHub Pages через GitHub Actions (`.github/workflows/`)
+- Decap CMS для редактирования контента через `/admin/`
 
 ## Запуск на Replit
 
@@ -15,6 +16,25 @@ python3 -m http.server 5000
 ```
 
 Workflow «Start application» настроен и запускается автоматически.
+
+## Визуальное редактирование контента
+
+Откройте в браузере:
+
+```text
+/admin/
+```
+
+Админка Decap CMS уже подключена. Поля сайта находятся в `content/site.json`, а их описание — в `admin/config.yml`.
+
+Чтобы кнопка **Publish** могла делать коммиты в GitHub:
+
+1. Разместите сайт на Netlify (или подключите Git Gateway к вашему Netlify-сайту).
+2. В Netlify включите **Identity** и затем **Git Gateway**.
+3. Пригласите свой email в Identity и задайте пароль.
+4. Откройте `https://ваш-домен.netlify.app/admin/` и войдите.
+
+В текущем Replit-превью `/admin/` открывает интерфейс Decap, но публикация через `git-gateway` требует настроек Netlify — статический сервер Replit сам авторизацию GitHub не предоставляет.
 
 ## Структура `index.html`
 
