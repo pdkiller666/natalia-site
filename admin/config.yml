@@ -2,6 +2,7 @@ backend:
   name: github
   repo: pdkiller666/natalia-site
   branch: main
+  base_url: https://netlify-cms-github-oauth-provider-vert.vercel.app
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
