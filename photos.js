@@ -1,4 +1,4 @@
-/* Применяет фото, галерею и ВСЕ текстовые поля из content/site.json */
+/* Применяет цвета, фото, галерею и ВСЕ текстовые поля из content/site.json */
 (function () {
   'use strict';
   var esc = function (s) {
@@ -6,7 +6,6 @@
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
   };
-  /* *текст* в заголовках становится курсивом <em> */
   var fmtEm = function (s) { return esc(s).replace(/\*([^*]+)\*/g, '<em>$1</em>'); };
   var fmtNum = function (n) { return Number(n).toLocaleString('ru-RU'); };
   function fixUrl(u) {
@@ -23,7 +22,10 @@
     el.removeAttribute('srcset'); el.removeAttribute('sizes');
     el.src = fixUrl(url);
   }
-  function txt(sel, v) { var el = (typeof sel === 'string') ? document.querySelector(sel) : sel; if (el && v != null) el.textContent = v; }
+  function txt(sel, v) {
+    var el = (typeof sel === 'string') ? document.querySelector(sel) : sel;
+    if (el && v != null) el.textContent = v;
+  }
   function setFirstText(el, v) {
     if (!el || v == null) return;
     for (var i = 0; i < el.childNodes.length; i++)
@@ -38,12 +40,43 @@
     }
     return null;
   }
+  /* ── цвета ── */
+  function hexToRgb(hex) {
+    var m = String(hex).replace('#', '');
+    if (m.length === 3) m = m[0] + m[0] + m[1] + m[1] + m[2] + m[2];
+    var n = parseInt(m, 16);
+    if (isNaN(n)) return null;
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  }
+  function rgba(hex, a) {
+    var c = hexToRgb(hex);
+    return c ? 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')' : null;
+  }
+  function applyColors(C) {
+    if (!C) return;
+    var r = document.documentElement.style;
+    var direct = {
+      bg: '--bg', bg2: '--bg2', panel: '--panel',
+      ink: '--ink', muted: '--muted', faint: '--faint',
+      accent: '--rose', gold: '--gold',
+      cream: '--cream', creamInk: '--cream-ink', creamMut: '--cream-mut',
+      creamRose: '--cream-rose', warn: '--warn'
+    };
+    for (var k in direct) if (C[k]) r.setProperty(direct[k], C[k]);
+    if (C.accent) {
+      r.setProperty('--rose-soft', rgba(C.accent, .14));
+      r.setProperty('--line', rgba(C.accent, .24));
+    }
+    if (C.ink) r.setProperty('--line-soft', rgba(C.ink, .09));
+    if (C.creamInk) r.setProperty('--cream-line', rgba(C.creamInk, .16));
+  }
 
   fetch('content/site.json', { cache: 'no-store' })
     .then(function (r) { return r.ok ? r.json() : null; })
     .catch(function () { return null; })
     .then(function (d) {
       if (!d) return;
+      applyColors(d.colors);
       var P = d.photos || {}, S = d.sections || {};
 
       /* ── мета-данные ── */
@@ -95,7 +128,7 @@
         }
       }
 
-      /* ── видео ─ */
+      /* ── видео ── */
       if (S.video) {
         var vc = document.querySelectorAll('.video-cap > *');
         if (vc[0] && S.video.description) vc[0].textContent = S.video.description;
@@ -115,7 +148,7 @@
             var tags = Array.isArray(f.tags) ? f.tags.map(function (t) {
               return '<span>' + esc(typeof t === 'string' ? t : (t.tag || '')) + '</span>';
             }).join('') : '';
-            return '<div class="fcard ' + (layout[i] || '') + '">' + img +
+            return '<div class="fcard reveal ' + (layout[i] || '') + '">' + img +
               '<div class="f-in"><span class="f-num">' + esc(f.number || '') + '</span><h3>' + esc(f.name || '') +
               '</h3><p>' + esc(f.description || '') + '</p><div class="f-tags">' + tags +
               '</div></div><span class="f-arr">→</span></div>';
@@ -172,7 +205,7 @@
         if (fc) fc.textContent = [F.copyright, F.disclaimer].filter(Boolean).join(' · ');
       }
 
-      /* ── фото и галерея (как раньше) ── */
+      /* ── фото и галерея ── */
       setImg('.hero-visual .photo-frame img', P.hero);
       setImg('.about-photo .photo-frame img', P.about);
       setImg('.video-frame img', P.showreel);
