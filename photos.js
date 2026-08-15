@@ -23,7 +23,7 @@
     el.removeAttribute('srcset'); el.removeAttribute('sizes');
     el.src = fixUrl(url);
   }
-  function txt(sel, v) { var el = document.querySelector(sel); if (el && v != null) el.textContent = v; }
+  function txt(sel, v) { var el = (typeof sel === 'string') ? document.querySelector(sel) : sel; if (el && v != null) el.textContent = v; }
   function setFirstText(el, v) {
     if (!el || v == null) return;
     for (var i = 0; i < el.childNodes.length; i++)
