@@ -1,4 +1,4 @@
-/* Подставляет фото и галерею из content/site.json (меняются через админку) */
+/* Подставляет фото и галерею из content/site.json (меняются через админке) */
 (function () {
   'use strict';
   var esc = function (s) {
@@ -6,12 +6,21 @@
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
   };
+  /* Учитывает хостинг в подпапке (GitHub Pages): "/assets/..." -> "<текущая папка>/assets/..." */
+  function fixUrl(u) {
+    if (!u) return u;
+    if (u.charAt(0) === '/' && u.charAt(1) !== '/') {
+      var base = location.pathname.replace(/[^/]*$/, '');
+      return base + u.slice(1);
+    }
+    return u;
+  }
   function set(el, url) {
     if (!url) return;
     if (typeof el === 'string') el = document.querySelector(el);
     if (!el) return;
     el.removeAttribute('srcset'); el.removeAttribute('sizes');
-    el.src = url;
+    el.src = fixUrl(url);
   }
   fetch('content/site.json', { cache: 'no-store' })
     .then(function (r) { return r.ok ? r.json() : null; })
@@ -28,7 +37,7 @@
       var g = d.gallery, box = document.querySelector('.polas');
       if (Array.isArray(g) && g.length && box) {
         box.innerHTML = g.map(function (it) {
-          return '<figure class="pola"><img src="' + esc(it.photo || '') + '" width="520" height="650" loading="lazy" alt="' + esc(it.caption || '') + '"><figcaption>' + esc(it.caption || '') + '</figcaption></figure>';
+          return '<figure class="pola"><img src="' + esc(fixUrl(it.photo)) + '" width="520" height="650" loading="lazy" alt="' + esc(it.caption || '') + '"><figcaption>' + esc(it.caption || '') + '</figcaption></figure>';
         }).join('');
       }
     });
