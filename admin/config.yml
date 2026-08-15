@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: pdkiller666/natalia-site
   branch: main
 
 media_folder: "assets/uploads"
