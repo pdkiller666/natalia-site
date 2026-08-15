@@ -115,7 +115,7 @@
             var tags = Array.isArray(f.tags) ? f.tags.map(function (t) {
               return '<span>' + esc(typeof t === 'string' ? t : (t.tag || '')) + '</span>';
             }).join('') : '';
-            return '<div class="fcard reveal ' + (layout[i] || '') + '">' + img +
+            return '<div class="fcard ' + (layout[i] || '') + '">' + img +
               '<div class="f-in"><span class="f-num">' + esc(f.number || '') + '</span><h3>' + esc(f.name || '') +
               '</h3><p>' + esc(f.description || '') + '</p><div class="f-tags">' + tags +
               '</div></div><span class="f-arr">→</span></div>';
