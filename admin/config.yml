@@ -23,7 +23,22 @@ collections:
               - {name: title, label: "Заголовок страницы (title)", widget: string}
               - {name: description, label: "Описание (description)", widget: text}
               - {name: ogImage, label: "OG-изображение (для соцсетей)", widget: image}
-          
+              
+          - name: "colors"
+            label: "Цвета сайта"
+            widget: "object"
+            fields:
+              - {name: bg, label: "Основной фон", widget: color}
+              - {name: bg2, label: "Фон карточек и секций", widget: color}
+              - {name: ink, label: "Основной текст", widget: color}
+              - {name: muted, label: "Вторичный текст", widget: color}
+              - {name: faint, label: "Приглушённый текст (подписи)", widget: color}
+              - {name: accent, label: "Акцент (кнопки, заголовки, рамки)", widget: color}
+              - {name: gold, label: "Золото (звёздочки, детали)", widget: color}
+              - {name: cream, label: "Фон светлой секции", widget: color}
+              - {name: creamInk, label: "Текст на светлой секции", widget: color}
+              - {name: creamRose, label: "Акцент на светлой секции", widget: color}
+              
           - name: "hero"
             label: "Главный экран"
             widget: "object"
