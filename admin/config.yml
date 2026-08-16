@@ -232,6 +232,14 @@ collections:
               - {name: vk, label: "Ссылка VK", widget: string, required: false}
               - {name: instagram, label: "Ссылка Instagram", widget: string, required: false}
               - {name: geography, label: "География", widget: string}
+
+.         - name: "socials"
+            label: "Кнопки соцсетей"
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - {name: label, label: "Текст кнопки", widget: string}
+              - {name: url, label: "Ссылка", widget: string}
           
           - name: "team"
             label: "Команда"
