@@ -188,6 +188,8 @@ collections:
               - {name: showreel, label: "Постер шоурила (16:9)", widget: image, required: false}
               - {name: format1, label: "Формат «Свадьбы» (горизонтальное)", widget: image, required: false}
               - {name: format2, label: "Формат «Корпоративы» (горизонтальное)", widget: image, required: false}
+              - {name: format3, label: "Формат «Юбилеи» (горизонтальное)", widget: image, required: false}
+              - {name: format4, label: "Формат «Частные вечера» (горизонтальное)", widget: image, required: false}
           - name: "gallery"
             label: "Галерея «Моменты»"
             widget: list
