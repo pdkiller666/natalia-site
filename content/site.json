@@ -5,8 +5,8 @@
     "showreel": "/assets/uploads/img_20260814_124709_711.jpg",
     "format1": "/assets/uploads/img_20260814_124709_739.jpg",
     "format2": "/assets/uploads/img_20260814_124709_086.jpg",
-    "format3": "https://picsum.photos/seed/family-anniversary-warm/900/620",
-    "format4": "https://picsum.photos/seed/private-evening-presentation/900/620"
+    "format3": "/assets/uploads/img_20260816_124010_495.jpg",
+    "format4": "/assets/uploads/img_20260816_124011_426.jpg"
   },
   "cases": [
     {
@@ -34,23 +34,29 @@
       "meta": "Юбилей · 60 гостей · 2026"
     }
   ],
-   "colors": {
-    "bg": "#141114",
-    "bg2": "#1a161a",
-    "ink": "#f9f6f0",
-    "muted": "#c8c2bc",
-    "faint": "#a49a93",
-    "accent": "#e0a99d",
-    "gold": "#c9a86a",
-    "cream": "#f2ece4",
-    "creamInk": "#241d1f",
-    "creamRose": "#b4695a"
-  },
   "meta": {
     "title": "Наталья Тарасова — ведущая мероприятий | Свадьбы, корпоративы, частные события",
     "description": "Ведущая, которая создает атмосферу и задает ритм вашего события. Проверьте свободную дату в календаре онлайн.",
     "ogImage": "https://pdkiller666.github.io/natalia-site/assets/uploads/img_20260815_011443_314.jpg"
   },
+  "socials": [
+    {
+      "label": "Telegram",
+      "url": "https://t.me/natalie_tarasovaa"
+    },
+    {
+      "label": "WhatsApp",
+      "url": "https://wa.me/message/PO6KYTIUM2ZAD1"
+    },
+    {
+      "label": "VK",
+      "url": "https://vk.ru/ntarasovaa27"
+    },
+    {
+      "label": "Instagram*",
+      "url": "https://www.instagram.com/natalie__tarasova"
+    }
+  ],
   "logos": [
     {
       "name": "Grand Hotel"
@@ -263,6 +269,18 @@
       ]
     }
   },
+  "colors": {
+    "gold": "#c9a86a",
+    "cream": "#f2ece4",
+    "creamInk": "#241d1f",
+    "bg": "#141114",
+    "ink": "#f9f6f0",
+    "accent": "#e0a99d",
+    "muted": "#c8c2bc",
+    "bg2": "#1a161a",
+    "creamRose": "#b4695a",
+    "faint": "#a49a93"
+  },
   "rituals": [
     {
       "title": "Свеча для родителей",
@@ -384,12 +402,6 @@
       "source": "Рекомендация"
     }
   ],
-  "socials": [
-    {"label": "Telegram", "url": "https://t.me/natalie_tarasovaa"},
-    {"label": "WhatsApp", "url": "https://wa.me/message/PO6KYTIUM2ZAD1"},
-    {"label": "VK", "url": "https://vk.ru/ntarasovaa27"},
-    {"label": "Instagram*", "url": "https://www.instagram.com/natalie__tarasova"}
-  ], 
   "footer": {
     "brand": "Наталья Тарасова",
     "subtitle": "event host",
