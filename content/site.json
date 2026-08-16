@@ -382,6 +382,12 @@
       "source": "Рекомендация"
     }
   ],
+  "socials": [
+    {"label": "Telegram", "url": "https://t.me/natalie_tarasovaa"},
+    {"label": "WhatsApp", "url": "https://wa.me/message/PO6KYTIUM2ZAD1"},
+    {"label": "VK", "url": "https://vk.ru/ntarasovaa27"},
+    {"label": "Instagram*", "url": "https://www.instagram.com/natalie__tarasova"}
+  ], 
   "footer": {
     "brand": "Наталья Тарасова",
     "subtitle": "event host",
