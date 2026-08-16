@@ -193,6 +193,17 @@
       /* ── контакты: география ── */
       if (d.contacts && d.contacts.geography) txt('.c-list .row b', d.contacts.geography);
 
+      /* ── кнопки соцсетей из списка ── */
+      if (Array.isArray(d.socials) && d.socials.length) {
+        var firstSoc = document.getElementById('socTg') || document.getElementById('socWa');
+        if (firstSoc && firstSoc.parentNode) {
+          var socCls = firstSoc.className;
+          firstSoc.parentNode.innerHTML = d.socials.map(function (s) {
+            return '<a class="' + socCls + '" href="' + esc(s.url || '#') + '" target="_blank" rel="noopener">' + esc(s.label || '') + '</a>';
+          }).join('');
+        }
+      }
+      
       /* ── футер ── */
       var F = d.footer || {};
       var fb = document.querySelector('.foot-brand');
