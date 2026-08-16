@@ -141,14 +141,15 @@
       if (S.formats && Array.isArray(S.formats.items) && S.formats.items.length) {
         var grid = document.querySelector('.f-grid');
         if (grid) {
-          var layout = ['c7 ph', 'c5 ph', 'c5', 'c7'];
+          var layout = ['c7', 'c5', 'c5', 'c7'];
+          var fphotos = [P.format1, P.format2, P.format3, P.format4];
           grid.innerHTML = S.formats.items.map(function (f, i) {
-            var photo = i === 0 ? P.format1 : (i === 1 ? P.format2 : null);
+            var photo = fphotos[i] || null;
             var img = photo ? '<img src="' + esc(fixUrl(photo)) + '" loading="lazy" alt="">' : '';
             var tags = Array.isArray(f.tags) ? f.tags.map(function (t) {
               return '<span>' + esc(typeof t === 'string' ? t : (t.tag || '')) + '</span>';
             }).join('') : '';
-            return '<div class="fcard ' + (layout[i] || '') + '">' + img +
+            return '<div class="fcard ' + (layout[i] || '') + (photo ? ' ph' : '') + '">' + img +
               '<div class="f-in"><span class="f-num">' + esc(f.number || '') + '</span><h3>' + esc(f.name || '') +
               '</h3><p>' + esc(f.description || '') + '</p><div class="f-tags">' + tags +
               '</div></div><span class="f-arr">→</span></div>';
