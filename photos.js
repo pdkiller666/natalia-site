@@ -87,7 +87,8 @@
         '#lbClose{top:12px;right:12px}' +
         '#lbPrev{left:10px;top:50%;transform:translateY(-50%)}' +
         '#lbNext{right:10px;top:50%;transform:translateY(-50%)}' +
-        '.pola{cursor:pointer}.fcard{cursor:pointer}';
+        '.pola{cursor:pointer}.fcard{cursor:pointer}' +
+        '.case-gal-btn{margin-top:14px;background:rgba(249,246,240,.08);border:1px solid rgba(224,169,157,.35);color:#e0a99d;padding:9px 16px;border-radius:999px;font:600 12px/1 system-ui,sans-serif;letter-spacing:.08em;cursor:pointer;display:inline-block}';
       document.head.appendChild(st);
     }
     var lb = document.createElement('div');
@@ -269,10 +270,6 @@
           }
         }
       }
-
-      /* ── кейсы: фон и галереи ── */
-      decorateCases(d.cases || []);
-      setTimeout(function () { decorateCases(d.cases || []); }, 600);
 
       /* ── мелочи секций ── */
       if (S.prices) { txt('.pk-note', S.prices.note); txt('.team-cap', S.prices.teamTitle); }

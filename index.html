@@ -1399,15 +1399,29 @@ function renderTeam(list){
 function renderCases(list){
   const box = document.getElementById('casesList');
   if (!box || !Array.isArray(list) || !list.length) return;
-  box.innerHTML = list.map((c, i) =>
-    '<article class="case reveal"><div class="case-main"><span class="f-num">Кейс ' +
-    String(i + 1).padStart(2, '0') + '</span><h3>' + escapeHtml(c.title || '') +
-    '</h3><p><b>Задача:</b> ' + escapeHtml(c.task || '') + ' <b>Решение:</b> ' +
-    escapeHtml(c.solution || '') + '</p></div><div class="case-side"><div class="case-res">' +
-    escapeHtml(c.result || '') + '<small>' + escapeHtml(c.result_note || '') +
-    '</small></div><span class="case-meta">' + escapeHtml(c.meta || '') +
-    '</span></div></article>'
-  ).join('');
+  box.innerHTML = list.map((c, i) => {
+    const bgStyle = c.photo
+      ? ' style="background-image:linear-gradient(rgba(20,17,20,.84),rgba(20,17,20,.88)),url(\'' + escapeHtml(c.photo) + '\');background-size:cover;background-position:center"'
+      : '';
+    const galBtn = (Array.isArray(c.gallery) && c.gallery.length)
+      ? '<button class="case-gal-btn" data-cidx="' + i + '">📸 Фото кейса · ' + c.gallery.length + '</button>'
+      : '';
+    return '<article class="case reveal"' + bgStyle + '><div class="case-main"><span class="f-num">Кейс ' +
+      String(i + 1).padStart(2, '0') + '</span><h3>' + escapeHtml(c.title || '') +
+      '</h3><p><b>Задача:</b> ' + escapeHtml(c.task || '') + ' <b>Решение:</b> ' +
+      escapeHtml(c.solution || '') + '</p>' + galBtn + '</div><div class="case-side"><div class="case-res">' +
+      escapeHtml(c.result || '') + '<small>' + escapeHtml(c.result_note || '') +
+      '</small></div><span class="case-meta">' + escapeHtml(c.meta || '') +
+      '</span></div></article>';
+  }).join('');
+  box.querySelectorAll('.case-gal-btn').forEach(function(btn) {
+    var ci = +btn.getAttribute('data-cidx');
+    var gal = list[ci] && list[ci].gallery;
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (window.__openLb && Array.isArray(gal) && gal.length) window.__openLb(gal, 0);
+    });
+  });
 }
 function renderRituals(list){
   const box = document.getElementById('ritScroller');
@@ -1545,6 +1559,6 @@ if (window.matchMedia('(pointer:fine)').matches && !RM){
 }
 })();
 </script>
-<script src="photos.js?v=11"></script>
+<script src="photos.js?v=12"></script>
 </body>
 </html>
