@@ -77,8 +77,8 @@
       var st = document.createElement('style');
       st.id = 'lbStyle';
       st.textContent =
-        '#lightbox{position:fixed;inset:0;z-index:9999;background:rgba(10,8,10,.94);display:none;align-items:center;justify-content:center;flex-direction:column;padding:16px}' +
-        '#lightbox.open{display:flex}' +
+        '#lightbox{position:fixed;inset:0;z-index:9999;background:rgba(10,8,10,.94);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:16px;opacity:0;pointer-events:none;transition:opacity .35s ease}' +
+        '#lightbox.open{opacity:1;pointer-events:auto}' +
         '#lightbox img{max-width:92vw;max-height:76vh;object-fit:contain;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.6)}' +
         '#lbCap{margin-top:14px;color:#f9f6f0;font:500 15px/1.4 system-ui,sans-serif;text-align:center}' +
         '#lbCap small{display:block;color:#c8c2bc;margin-top:4px}' +

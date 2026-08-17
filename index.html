@@ -1543,8 +1543,8 @@ function renderLogos(list){
 function renderFaq(list){
   const box = document.getElementById('faqList');
   if (!box || !Array.isArray(list) || !list.length) return;
-  box.innerHTML = list.map(f =>
-    '<div class="faq-item"><button class="faq-q" aria-expanded="false">' +
+  box.innerHTML = list.map((f, i) =>
+    '<div class="faq-item reveal" data-d="' + (i % 3) + '"><button class="faq-q" aria-expanded="false">' +
     escapeHtml(f.q || '') + '<span class="faq-ic" aria-hidden="true"></span></button>' +
     '<div class="faq-a"><div class="faq-a-in"><p>' + escapeHtml(f.a || '') +
     '</p></div></div></div>'
