@@ -308,12 +308,12 @@
     }
   ],
   "gallery": [
-    {"photo": "/assets/uploads/img_20260814_124700_143.jpg", "caption": "первый танец, июнь", "event": "Свадьба · 120 гостей"},
-    {"photo": "/assets/uploads/img_20260814_124709_591.jpg", "caption": "гала-вечер компании", "event": "Корпоратив · IT-компания"},
-    {"photo": "/assets/uploads/img_20260814_124700_577.jpg", "caption": "летняя церемония", "event": "Свадьба под открытым небом"},
-    {"photo": "/assets/uploads/img_20260814_124700_310.jpg", "caption": "папин юбилей — 60", "event": "Юбилей · 60 гостей"},
-    {"photo": "/assets/uploads/img_20260814_124700_141.jpg", "caption": "запуск бренда, NDA", "event": "Частный вечер"},
-    {"photo": "/assets/uploads/img_20260814_124709_868.jpg", "caption": "финал на миллион", "event": "Свадьба · 180 гостей"}
+    {"photo": "/assets/uploads/img_20260814_124700_143.jpg", "caption": "первый танец, июнь", "event": "Свадьба · 120 гостей", "category": "wedding"},
+    {"photo": "/assets/uploads/img_20260814_124709_591.jpg", "caption": "гала-вечер компании", "event": "Корпоратив · IT-компания", "category": "corporate"},
+    {"photo": "/assets/uploads/img_20260814_124700_577.jpg", "caption": "летняя церемония", "event": "Свадьба под открытым небом", "category": "wedding"},
+    {"photo": "/assets/uploads/img_20260814_124700_310.jpg", "caption": "папин юбилей — 60", "event": "Юбилей · 60 гостей", "category": "jubilee"},
+    {"photo": "/assets/uploads/img_20260814_124700_141.jpg", "caption": "запуск бренда, NDA", "event": "Частный вечер", "category": "private"},
+    {"photo": "/assets/uploads/img_20260814_124709_868.jpg", "caption": "финал на миллион", "event": "Свадьба · 180 гостей", "category": "wedding"}
   ],
   "contacts": {
     "phone": "+7 961 989-44-89",

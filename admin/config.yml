@@ -198,6 +198,16 @@ collections:
               - {name: photo, label: "Фото (вертикальное 4:5)", widget: image, required: false}
               - {name: caption, label: "Подпись", widget: string}
               - {name: event, label: "Событие (показывается в просмотрщике)", widget: string, required: false}
+              - name: category
+                label: "Категория"
+                widget: select
+                required: false
+                options:
+                  - {value: wedding, label: "Свадьбы"}
+                  - {value: corporate, label: "Корпоративы"}
+                  - {value: jubilee, label: "Юбилеи и семейные"}
+                  - {value: private, label: "Частные вечера и презентации"}
+                  - {value: other, label: "Другое"}
           - name: "socials"
             label: "Кнопки соцсетей"
             widget: list
