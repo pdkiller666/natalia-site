@@ -197,6 +197,7 @@ collections:
             fields:
               - {name: photo, label: "Фото (вертикальное 4:5)", widget: image, required: false}
               - {name: caption, label: "Подпись", widget: string}
+              - {name: event, label: "Событие (показывается в просмотрщике)", widget: string, required: false}
           - name: "socials"
             label: "Кнопки соцсетей"
             widget: list
