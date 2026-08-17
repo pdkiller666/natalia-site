@@ -1,0 +1,68 @@
+Отличная мысль — кейсы с живыми фото станут гораздо убедительнее. Делаем так: у каждого кейса появляется **фоновое фото блока** (приглушённое, чтобы текст читался) и **кнопка «Фото кейса»**, которая открывает просмотрщик с галереей именно этого кейса. site.json трогать не нужно — поля добавятся через админку.
+
+## 1. `admin/config.yml`
+
+Найдите блок «Кейсы (данные)» и после строки с `meta` добавьте два поля:
+
+```yaml
+              - {name: photo, label: "Фоновое фото блока", widget: image, required: false}
+              - name: gallery
+                label: "Галерея кейса (открывается кнопкой)"
+                widget: list
+                required: false
+                fields:
+                  - {name: photo, label: "Фото", widget: image, required: false}
+                  - {name: caption, label: "Подпись", widget: string, required: false}
+```
+
+## 2. `photos.js` — две вставки
+
+**а)** Перед строкой `fetch('content/site.json', { cache: 'no-store' })` вставьте функцию:
+
+```js
+  /* ── кейсы: фоновое фото + кнопка галереи ── */
+  function decorateCases(list) {
+    var wrap = document.getElementById('casesList');
+    if (!wrap || !Array.isArray(list)) return;
+    var nodes = wrap.querySelectorAll('.case');
+    for (var i = 0; i < nodes.length && i < list.length; i++) {
+      (function (el, c) {
+        if (el.dataset.decorated) return;
+        el.dataset.decorated = '1';
+        if (c.photo) {
+          el.style.backgroundImage = 'linear-gradient(rgba(20,17,20,.84), rgba(20,17,20,.88)), url("' + fixUrl(c.photo) + '")';
+          el.style.backgroundSize = 'cover';
+          el.style.backgroundPosition = 'center';
+        }
+        if (Array.isArray(c.gallery) && c.gallery.length) {
+          var btn = document.createElement('button');
+          btn.textContent = '📸 Фото кейса · ' + c.gallery.length;
+          btn.style.cssText = 'margin-top:14px;background:rgba(249,246,240,.08);border:1px solid rgba(224,169,157,.35);color:#e0a99d;padding:9px 16px;border-radius:999px;font:600 12px/1 system-ui,sans-serif;letter-spacing:.08em;cursor:pointer';
+          btn.onclick = function (e) { e.stopPropagation(); window.__openLb(c.gallery, 0); };
+          el.appendChild(btn);
+        }
+      })(nodes[i], list[i]);
+    }
+  }
+```
+
+**б)** В основном блоке, сразу после комментария `/* ── мелочи секций ── */` (перед `if (S.prices)`), вставьте:
+
+```js
+      /* ── кейсы: фон и галереи ── */
+      decorateCases(d.cases || []);
+      setTimeout(function () { decorateCases(d.cases || []); }, 600);
+```
+
+(второй вызов — страховка от гонки со встроенным рендером кейсов)
+
+## 3. `index.html`
+
+`<script src="photos.js?v=11"></script>`
+
+## Как пользоваться
+
+- Админка → «Кейсы (данные)» → раскройте кейс → загрузите **фоновое фото** и/или добавьте список фото в **«Галерея кейса»** → Publish.
+- На сайте: блок кейса получает атмосферный фон, внизу появляется кнопка «📸 Фото кейса · N» → тап → полноэкранный просмотрщик листает только фото этого кейса (свайпы/стрелки работают).
+
+Логика единая с остальными галереями — один просмотрщик, разные списки фото. Передавайте агенту, и после применения проверьте на первом кейсе: добавьте туда 2–3 фото и посмотрите фон + кнопку. 📸

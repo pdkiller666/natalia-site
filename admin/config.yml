@@ -246,6 +246,14 @@ collections:
               - {name: result, label: "Результат крупно", widget: string}
               - {name: result_note, label: "Подпись под результатом", widget: string}
               - {name: meta, label: "Мета", widget: string}
+              - {name: photo, label: "Фоновое фото блока", widget: image, required: false}
+              - name: gallery
+                label: "Галерея кейса (открывается кнопкой)"
+                widget: list
+                required: false
+                fields:
+                  - {name: photo, label: "Фото", widget: image, required: false}
+                  - {name: caption, label: "Подпись", widget: string, required: false}
           - name: "rituals"
             label: "Фирменные ритуалы (данные)"
             widget: list
