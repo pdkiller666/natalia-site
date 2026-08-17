@@ -21,6 +21,12 @@
         {
           "photo": "/assets/uploads/gemini_generated_image_4dir1s4dir1s4dir.jpeg",
           "caption": "Свадьба на 180 гостей под открытым небом"
+        },
+        {
+          "photo": "/assets/uploads/gemini_generated_image_4dir1s4dir1s4dir.jpeg"
+        },
+        {
+          "photo": "/assets/uploads/gemini_generated_image_4dir1s4dir1s4dir.jpeg"
         }
       ]
     },
@@ -31,7 +37,18 @@
       "result": "NPS 9.6/10",
       "result_note": "340 человек танцевали до 02:00",
       "meta": "Корпоратив · 450 гостей · 2025",
-      "photo": "/assets/uploads/gemini_generated_image_68zw2v68zw2v68zw.jpeg"
+      "photo": "/assets/uploads/gemini_generated_image_68zw2v68zw2v68zw.jpeg",
+      "gallery": [
+        {
+          "photo": "/assets/uploads/gemini_generated_image_68zw2v68zw2v68zw.jpeg"
+        },
+        {
+          "photo": "/assets/uploads/gemini_generated_image_68zw2v68zw2v68zw.jpeg"
+        },
+        {
+          "photo": "/assets/uploads/gemini_generated_image_68zw2v68zw2v68zw.jpeg"
+        }
+      ]
     },
     {
       "title": "Юбилей папы — 60 лет",
@@ -40,7 +57,18 @@
       "result": "40 минут фильма",
       "result_note": "семья пересматривает каждый месяц",
       "meta": "Юбилей · 60 гостей · 2026",
-      "photo": "/assets/uploads/gemini_generated_image_6xpo946xpo946xpo.jpeg"
+      "photo": "/assets/uploads/gemini_generated_image_6xpo946xpo946xpo.jpeg",
+      "gallery": [
+        {
+          "photo": "/assets/uploads/gemini_generated_image_6xpo946xpo946xpo.jpeg"
+        },
+        {
+          "photo": "/assets/uploads/gemini_generated_image_6xpo946xpo946xpo.jpeg"
+        },
+        {
+          "photo": "/assets/uploads/gemini_generated_image_6xpo946xpo946xpo.jpeg"
+        }
+      ]
     }
   ],
   "meta": {
