@@ -77,7 +77,7 @@ collections:
                   - {name: heading, label: "Заголовок", widget: text}
                   - {name: description, label: "Описание", widget: string}
                   - {name: subdescription, label: "Под-описание", widget: string}
-                  - {name: videoId, label: "ID видео YouTube", widget: string}
+                  - {name: videoUrl, label: "Ссылка на видео (YouTube, VK, RuTube, Vimeo и др.)", widget: string}
               - name: "formats"
                 label: "Форматы событий"
                 widget: "object"

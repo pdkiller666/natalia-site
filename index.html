@@ -1036,10 +1036,42 @@ const cio = new IntersectionObserver(entries => {
 document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
 
 /* ---------- showreel ---------- */
+function toEmbedUrl(url) {
+  if (!url) return '';
+  url = url.trim();
+  // Already embed-style — return as-is
+  if (/\/embed\/|video_ext\.php|\/play\/embed\/|videoembed/.test(url)) return url;
+  // YouTube: youtube.com/watch?v=ID or youtu.be/ID
+  var yt = url.match(/(?:youtube\.com\/watch\?.*v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+  if (yt) return 'https://www.youtube.com/embed/' + yt[1];
+  // Vimeo: vimeo.com/ID
+  var vi = url.match(/vimeo\.com\/(\d+)/);
+  if (vi) return 'https://player.vimeo.com/video/' + vi[1];
+  // RuTube: rutube.ru/video/HASH/
+  var rt = url.match(/rutube\.ru\/video\/([a-f0-9]+)/i);
+  if (rt) return 'https://rutube.ru/play/embed/' + rt[1] + '/';
+  // OK.ru: ok.ru/video/ID
+  var ok = url.match(/ok\.ru\/video\/(\d+)/);
+  if (ok) return 'https://ok.ru/videoembed/' + ok[1];
+  // VK: vk.com/video-OWNERID_VIDEOID or vkvideo.ru
+  var vk = url.match(/vk(?:video)?\.(?:com|ru)\/video(-?\d+)_(\d+)/);
+  if (vk) return 'https://vk.com/video_ext.php?oid=' + vk[1] + '&id=' + vk[2] + '&hd=2';
+  // Fallback — return as-is (direct embed src pasted)
+  return url;
+}
+function toAutoplayUrl(embedUrl) {
+  if (!embedUrl) return embedUrl;
+  var sep = embedUrl.includes('?') ? '&' : '?';
+  if (/youtube\.com/.test(embedUrl)) return embedUrl + sep + 'autoplay=1&rel=0';
+  if (/vimeo\.com/.test(embedUrl))   return embedUrl + sep + 'autoplay=1';
+  if (/rutube\.ru/.test(embedUrl))   return embedUrl + sep + 'autoplay=1';
+  return embedUrl;
+}
 const playBtn = document.getElementById('playBtn');
 playBtn.addEventListener('click', () => {
   const frame = playBtn.closest('.video-frame');
-  frame.innerHTML = '<iframe src="' + frame.dataset.video + '?autoplay=1&rel=0" title="Шоурил Натальи Тарасовой" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';
+  const src = toAutoplayUrl(frame.dataset.video);
+  frame.innerHTML = '<iframe src="' + src + '" title="Шоурил Натальи Тарасовой" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';
   track('showreel_play');
 });
 
@@ -1476,6 +1508,10 @@ function applyCmsContent(data){
       const availability = document.getElementById('availText');
       if (lead && data.hero.lead) lead.textContent = data.hero.lead;
       if (availability && data.hero.availability) availability.textContent = data.hero.availability;
+    }
+    if (data.video && data.video.videoUrl) {
+      const vf = document.querySelector('.video-frame');
+      if (vf) vf.dataset.video = toEmbedUrl(data.video.videoUrl);
     }
     if (data.about){
       const years = document.getElementById('expYears');
