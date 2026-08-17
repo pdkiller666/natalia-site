@@ -1366,7 +1366,13 @@ function escapeHtml(value){
 }
 function mediaUrl(value){
   const url = String(value || '');
-  return /^(https?:\/\/|\/|\.\/)/i.test(url) ? url : '';
+  if (!url) return '';
+  if (/^https?:\/\//i.test(url)) return url;
+  // Convert /absolute paths to relative so GitHub Pages subdirectory works
+  if (url.charAt(0) === '/' && url.charAt(1) !== '/') {
+    return location.pathname.replace(/[^/]*$/, '') + url.slice(1);
+  }
+  return url.startsWith('./') ? url : '';
 }
 function renderStats(list){
   const box = document.getElementById('statsGrid');
@@ -1400,8 +1406,9 @@ function renderCases(list){
   const box = document.getElementById('casesList');
   if (!box || !Array.isArray(list) || !list.length) return;
   box.innerHTML = list.map((c, i) => {
-    const bgStyle = c.photo
-      ? ' style="background-image:linear-gradient(rgba(20,17,20,.84),rgba(20,17,20,.88)),url(\'' + escapeHtml(c.photo) + '\');background-size:cover;background-position:center"'
+    const bgPhoto = mediaUrl(c.photo);
+    const bgStyle = bgPhoto
+      ? ' style="background-image:linear-gradient(rgba(20,17,20,.84),rgba(20,17,20,.88)),url(\'' + escapeHtml(bgPhoto) + '\');background-size:cover;background-position:center"'
       : '';
     const galBtn = (Array.isArray(c.gallery) && c.gallery.length)
       ? '<button class="case-gal-btn" data-cidx="' + i + '">📸 Фото кейса · ' + c.gallery.length + '</button>'
@@ -1559,6 +1566,6 @@ if (window.matchMedia('(pointer:fine)').matches && !RM){
 }
 })();
 </script>
-<script src="photos.js?v=12"></script>
+<script src="photos.js?v=13"></script>
 </body>
 </html>
