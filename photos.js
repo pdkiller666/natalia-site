@@ -311,7 +311,7 @@
       var box = document.querySelector('.polas');
       if (g.length && box) {
         box.innerHTML = g.map(function (it, i) {
-          return '<figure class="pola" data-idx="' + i + '"><img src="' + esc(fixUrl(it.photo)) + '" width="520" height="650" loading="lazy" alt="' + esc(it.caption || '') + '"><figcaption>' + esc(it.caption || '') + '</figcaption></figure>';
+          return '<figure class="pola" data-idx="' + i + '"><div class="pola-img"><img src="' + esc(fixUrl(it.photo)) + '" width="520" height="650" loading="lazy" alt="' + esc(it.caption || '') + '"></div><figcaption>' + esc(it.caption || '') + '</figcaption></figure>';
         }).join('');
         box.addEventListener('click', function (e) {
           var fig = e.target.closest('.pola');
