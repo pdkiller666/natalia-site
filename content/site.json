@@ -457,6 +457,11 @@
     "copyright": "© 2026 · Ведущая мероприятий",
     "disclaimer": "Instagram* — продукт компании Meta, признанной экстремистской и запрещённой в РФ."
   },
+  "googleCalendar": {
+    "calendarId": "",
+    "apiKey": "",
+    "monthsToShow": 5
+  },
   "team": [
     {
       "photo": "https://picsum.photos/seed/dj-marat-portrait/112/112",

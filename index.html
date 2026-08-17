@@ -1573,6 +1573,17 @@ function applyCmsContent(data){
     const guarantee = document.getElementById('guaranteeBox');
     if (guarantee && typeof data.guarantee === 'string')
       guarantee.innerHTML = '<b>Гарантия.</b> ' + escapeHtml(data.guarantee);
+    if (data.googleCalendar) {
+      const gc = data.googleCalendar;
+      if (gc.calendarId && gc.calendarId.trim() && !gc.calendarId.includes('YOUR_'))
+        CONFIG.calendarId = gc.calendarId.trim();
+      if (gc.apiKey && gc.apiKey.trim() && !gc.apiKey.includes('YOUR_'))
+        CONFIG.apiKey = gc.apiKey.trim();
+      if (gc.monthsToShow && +gc.monthsToShow > 0)
+        CONFIG.monthsToShow = +gc.monthsToShow;
+      try { localStorage.removeItem('nt-booked-cache'); } catch(e) {}
+      loadBooked().then(function(map){ BOOKED = map; bookedReady = true; renderCal(); initChip(); });
+    }
     renderPrices(data.prices);
     renderTeam(data.team);
     renderCases(data.cases);
