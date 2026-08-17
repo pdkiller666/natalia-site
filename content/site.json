@@ -15,7 +15,8 @@
       "solution": "за 40 минут перенесли гостей в оранжерею, переписали вступление и превратили зонты в главный визуальный ход вечера.",
       "result": "0 пауз",
       "result_note": "97% гостей остались до финала",
-      "meta": "Свадьба · 180 гостей · 2025"
+      "meta": "Свадьба · 180 гостей · 2025",
+      "photo": "/assets/uploads/gemini_generated_image_4dir1s4dir1s4dir.jpeg"
     },
     {
       "title": "Новый год IT-компании, 450 человек",
@@ -23,7 +24,8 @@
       "solution": "интерактив через смартфоны, живой роаст на внутренние мемы компании и хэдлайнер на афтепати.",
       "result": "NPS 9.6/10",
       "result_note": "340 человек танцевали до 02:00",
-      "meta": "Корпоратив · 450 гостей · 2025"
+      "meta": "Корпоратив · 450 гостей · 2025",
+      "photo": "/assets/uploads/gemini_generated_image_68zw2v68zw2v68zw.jpeg"
     },
     {
       "title": "Юбилей папы — 60 лет",
@@ -31,7 +33,8 @@
       "solution": "формат «12 тостов от своих», фильм-сюрприз и тихий финал со свечами вместо салюта.",
       "result": "40 минут фильма",
       "result_note": "семья пересматривает каждый месяц",
-      "meta": "Юбилей · 60 гостей · 2026"
+      "meta": "Юбилей · 60 гостей · 2026",
+      "photo": "/assets/uploads/gemini_generated_image_6xpo946xpo946xpo.jpeg"
     }
   ],
   "meta": {
@@ -308,12 +311,42 @@
     }
   ],
   "gallery": [
-    {"photo": "/assets/uploads/img_20260814_124700_143.jpg", "caption": "первый танец, июнь", "event": "Свадьба · 120 гостей", "category": "wedding"},
-    {"photo": "/assets/uploads/img_20260814_124709_591.jpg", "caption": "гала-вечер компании", "event": "Корпоратив · IT-компания", "category": "corporate"},
-    {"photo": "/assets/uploads/img_20260814_124700_577.jpg", "caption": "летняя церемония", "event": "Свадьба под открытым небом", "category": "wedding"},
-    {"photo": "/assets/uploads/img_20260814_124700_310.jpg", "caption": "папин юбилей — 60", "event": "Юбилей · 60 гостей", "category": "jubilee"},
-    {"photo": "/assets/uploads/img_20260814_124700_141.jpg", "caption": "запуск бренда, NDA", "event": "Частный вечер", "category": "private"},
-    {"photo": "/assets/uploads/img_20260814_124709_868.jpg", "caption": "финал на миллион", "event": "Свадьба · 180 гостей", "category": "wedding"}
+    {
+      "photo": "/assets/uploads/img_20260814_124700_143.jpg",
+      "caption": "первый танец, июнь",
+      "event": "Свадьба · 120 гостей",
+      "category": "wedding"
+    },
+    {
+      "photo": "/assets/uploads/img_20260814_124709_591.jpg",
+      "caption": "гала-вечер компании",
+      "event": "Корпоратив · IT-компания",
+      "category": "corporate"
+    },
+    {
+      "photo": "/assets/uploads/img_20260814_124700_577.jpg",
+      "caption": "летняя церемония",
+      "event": "Свадьба под открытым небом",
+      "category": "wedding"
+    },
+    {
+      "photo": "/assets/uploads/img_20260814_124700_310.jpg",
+      "caption": "папин юбилей — 60",
+      "event": "Юбилей · 60 гостей",
+      "category": "jubilee"
+    },
+    {
+      "photo": "/assets/uploads/img_20260814_124700_141.jpg",
+      "caption": "запуск бренда, NDA",
+      "event": "Частный вечер",
+      "category": "private"
+    },
+    {
+      "photo": "/assets/uploads/img_20260814_124709_868.jpg",
+      "caption": "финал на миллион",
+      "event": "Свадьба · 180 гостей",
+      "category": "wedding"
+    }
   ],
   "contacts": {
     "phone": "+7 961 989-44-89",
