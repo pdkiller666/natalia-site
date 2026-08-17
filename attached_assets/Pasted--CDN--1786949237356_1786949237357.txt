@@ -1,0 +1,41 @@
+Мои проверки снова упираются в CDN-кэш (отдают версию до пуша), поэтому смотрю на то, что описал кодер, и на известную мне старую логику. Подход верный, но есть **два места, которые надо укрепить**, иначе часть сервисов будет открываться криво:
+
+## Проблема 1. Кнопка ▶ дописывает `?autoplay=1&rel=0` ко всем ссылкам
+
+Старая логика playBtn:
+```js
+frame.innerHTML = '<iframe src="' + frame.dataset.video + '?autoplay=1&rel=0" ...
+```
+Для YouTube это ок, но у VK/RuTube/Vimeo embed-адрес может уже содержать `?` — получится `...?autoplay=1?autoplay=1` или лишние параметры → плеер не запустится.
+
+**Правка в `index.html`** — замените обработчик playBtn на:
+
+```js
+playBtn.addEventListener('click', () => {
+  const frame = playBtn.closest('.video-frame');
+  let src = frame.dataset.video || '';
+  if (src.includes('youtube')) src += (src.includes('?') ? '&' : '?') + 'autoplay=1&rel=0';
+  frame.innerHTML = '<iframe src="' + src + '" title="Шоурил Натальи Тарасовой" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';
+  track('showreel_play');
+});
+```
+
+Теперь автоплей дописывается только для YouTube, остальные сервисы открываются как есть.
+
+## Проблема 2. В photos.js осталась старая строка с videoId
+
+```js
+if (frame && S.video.videoId) frame.dataset.video = 'https://www.youtube.com/embed/' + S.video.videoId;
+```
+
+После перехода на `videoUrl` она мертва (videoId больше нет), но если кто-то вернёт videoId — она перетрёт вашу ссылку. **Удалите эту строку** из photos.js (блок `/* ── видео ── */`), а заодно поднимите версию: `<script src="photos.js?v=13"></script>`.
+
+## Как проверить после пуша
+
+1. Админка → «Секции сайта» → «Видео» → вставьте по очереди и Publish:
+   - `https://www.youtube.com/watch?v=dQw4w9WgXcQ`
+   - `https://vk.com/video-123_456` (любой реальный)
+   - `https://rutube.ru/video/...`
+2. Сайт → Ctrl+Shift+R → тап ▶ — плеер должен открыться без чёрного экрана.
+
+Если после правок какой-то сервис не играет — пришлите ссылку и скрин, добавлю его формат в конвертер точечно. А пока отправьте кодеру эти две правки (playBtn + удаление строки videoId) — и можно заливать настоящий шоурил. 🎬
