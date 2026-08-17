@@ -16,7 +16,13 @@
       "result": "0 пауз",
       "result_note": "97% гостей остались до финала",
       "meta": "Свадьба · 180 гостей · 2025",
-      "photo": "/assets/uploads/gemini_generated_image_4dir1s4dir1s4dir.jpeg"
+      "photo": "/assets/uploads/gemini_generated_image_4dir1s4dir1s4dir.jpeg",
+      "gallery": [
+        {
+          "photo": "/assets/uploads/gemini_generated_image_4dir1s4dir1s4dir.jpeg",
+          "caption": "Свадьба на 180 гостей под открытым небом"
+        }
+      ]
     },
     {
       "title": "Новый год IT-компании, 450 человек",
