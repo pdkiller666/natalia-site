@@ -219,8 +219,7 @@
         var vc = document.querySelectorAll('.video-cap > *');
         if (vc[0] && S.video.description) vc[0].textContent = S.video.description;
         if (vc[1] && S.video.subdescription) vc[1].textContent = S.video.subdescription;
-        var frame = document.querySelector('.video-frame');
-        if (frame && S.video.videoId) frame.dataset.video = 'https://www.youtube.com/embed/' + S.video.videoId;
+        // videoUrl теперь обрабатывается через toEmbedUrl() в index.html
       }
 
       /* ── форматы событий ── */
