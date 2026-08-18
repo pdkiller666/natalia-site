@@ -133,30 +133,6 @@
   }
 
   /* ── кейсы: фоновое фото + кнопка галереи ── */
-  function decorateCases(list) {
-    var wrap = document.getElementById('casesList');
-    if (!wrap || !Array.isArray(list)) return;
-    var nodes = wrap.querySelectorAll('.case');
-    for (var i = 0; i < nodes.length && i < list.length; i++) {
-      (function (el, c) {
-        if (el.dataset.decorated) return;
-        el.dataset.decorated = '1';
-        if (c.photo) {
-          el.style.backgroundImage = 'linear-gradient(rgba(20,17,20,.84), rgba(20,17,20,.88)), url("' + fixUrl(c.photo) + '")';
-          el.style.backgroundSize = 'cover';
-          el.style.backgroundPosition = 'center';
-        }
-        if (Array.isArray(c.gallery) && c.gallery.length) {
-          var btn = document.createElement('button');
-          btn.textContent = '📸 Фото кейса · ' + c.gallery.length;
-          btn.style.cssText = 'margin-top:14px;background:rgba(249,246,240,.08);border:1px solid rgba(224,169,157,.35);color:#e0a99d;padding:9px 16px;border-radius:999px;font:600 12px/1 system-ui,sans-serif;letter-spacing:.08em;cursor:pointer';
-          btn.onclick = function (e) { e.stopPropagation(); window.__openLb(c.gallery, 0); };
-          el.appendChild(btn);
-        }
-      })(nodes[i], list[i]);
-    }
-  }
-
   fetch('content/site.json', { cache: 'no-store' })
     .then(function (r) { return r.ok ? r.json() : null; })
     .catch(function () { return null; })

@@ -1559,9 +1559,11 @@ function applyCmsContent(data){
       if (lead && data.hero.lead) lead.textContent = data.hero.lead;
       if (availability && data.hero.availability) availability.textContent = data.hero.availability;
     }
-    if (data.video && data.video.videoUrl) {
+    const vid = (data.sections && data.sections.video && data.sections.video.videoUrl)
+      ? data.sections.video : data.video;
+    if (vid && vid.videoUrl) {
       const vf = document.querySelector('.video-frame');
-      if (vf) vf.dataset.video = toEmbedUrl(data.video.videoUrl);
+      if (vf) vf.dataset.video = toEmbedUrl(vid.videoUrl);
     }
     if (data.about){
       const years = document.getElementById('expYears');
