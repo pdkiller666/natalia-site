@@ -299,15 +299,21 @@ collections:
                 required: false
                 default: ""
                 hint: "Google Cloud Console → API и сервисы → Учётные данные → Создать ключ. Обязательно ограничьте ключ по HTTP-источнику (домен сайта)."
+              - name: showPastMonths
+                label: "Показывать прошедшие месяцы"
+                widget: boolean
+                required: false
+                default: false
+                hint: "Вкл — календарь показывает с января текущего года (12 месяцев). Выкл — только текущий и следующие месяцы."
               - name: monthsToShow
-                label: "Сколько месяцев показывать"
+                label: "Сколько месяцев вперёд показывать"
                 widget: number
                 required: false
                 default: 5
                 value_type: int
                 min: 1
                 max: 12
-                hint: "Количество месяцев в календаре занятых дат (1–12)"
+                hint: "Работает только если «Прошедшие месяцы» выключены. Количество месяцев начиная с текущего (1–12)."
           - name: "footer"
             label: "Футер"
             widget: "object"

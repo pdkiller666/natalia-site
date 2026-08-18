@@ -460,6 +460,7 @@
   "googleCalendar": {
     "calendarId": "",
     "apiKey": "",
+    "showPastMonths": false,
     "monthsToShow": 5
   },
   "team": [

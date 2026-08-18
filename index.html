@@ -946,13 +946,15 @@ document.body.classList.add('js');
    ═══════════════════════════════════════════════════════════════ */
 
 /* 1) GOOGLE CALENDAR — источник занятых дат */
+const _calNow = new Date();
 const CONFIG = {
   calendarId: 'YOUR_CALENDAR_ID@group.calendar.google.com', // ID календаря «Брони»
   apiKey:     'YOUR_GOOGLE_API_KEY',                        // API-ключ Google Cloud
   cacheMinutes: 30,      // как долго посетители видят кеш (мин)
-  startYear: 2026,       // первый отображаемый месяц:
-  startMonth: 8,         //   8 = август 2026
-  monthsToShow: 5        // сколько месяцев показывать (5 → авг–дек 2026)
+  startYear:  _calNow.getFullYear(),  // автоматически — текущий год
+  startMonth: _calNow.getMonth() + 1, // автоматически — текущий месяц
+  monthsToShow: 5,       // сколько месяцев вперёд показывать
+  showPastMonths: false  // true → с января текущего года (управляется из админки)
 };
 
 /* 2) КОНТАКТЫ — подставляются по всему сайту автоматически */
@@ -987,7 +989,7 @@ const onReady = fn => document.readyState === 'complete' ? fn() : window.addEven
 const MONTHS_RU = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
 const MONTHS_NOM = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
 const WEEKDAYS = ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
-const RANGE_END = new Date(CONFIG.startYear, CONFIG.startMonth - 1 + CONFIG.monthsToShow, 0);
+function getRangeEnd(){ return new Date(CONFIG.startYear, CONFIG.startMonth - 1 + CONFIG.monthsToShow, 0); }
 const toISO = d => d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
 const humanOf = iso => { const p = iso.split('-').map(Number); return p[2] + ' ' + MONTHS_RU[p[1]-1] + ' ' + p[0]; };
 const isBooked = iso => { const p = iso.split('-').map(Number); return (BOOKED[p[0]+'-'+p[1]] || []).includes(p[2]); };
@@ -995,7 +997,7 @@ function isPast(iso){ const d = new Date(iso + 'T00:00:00'); const t = new Date(
 function nextFreeFrom(fromIso){
   let d = new Date(fromIso + 'T00:00:00');
   const t = new Date(); t.setHours(0,0,0,0);
-  while (d <= RANGE_END){
+  while (d <= getRangeEnd()){
     const iso = toISO(d);
     if (d >= t && !isBooked(iso)) return {iso, human: humanOf(iso)};
     d.setDate(d.getDate() + 1);
@@ -1577,12 +1579,23 @@ function applyCmsContent(data){
       guarantee.innerHTML = '<b>Гарантия.</b> ' + escapeHtml(data.guarantee);
     if (data.googleCalendar) {
       const gc = data.googleCalendar;
+      const _n = new Date();
       if (gc.calendarId && gc.calendarId.trim() && !gc.calendarId.includes('YOUR_'))
         CONFIG.calendarId = gc.calendarId.trim();
       if (gc.apiKey && gc.apiKey.trim() && !gc.apiKey.includes('YOUR_'))
         CONFIG.apiKey = gc.apiKey.trim();
-      if (gc.monthsToShow && +gc.monthsToShow > 0)
-        CONFIG.monthsToShow = +gc.monthsToShow;
+      if (gc.showPastMonths) {
+        // показывать с января текущего года, 12 месяцев
+        CONFIG.startYear  = _n.getFullYear();
+        CONFIG.startMonth = 1;
+        CONFIG.monthsToShow = 12;
+      } else {
+        // только будущие: старт с текущего месяца
+        CONFIG.startYear  = _n.getFullYear();
+        CONFIG.startMonth = _n.getMonth() + 1;
+        if (gc.monthsToShow && +gc.monthsToShow > 0)
+          CONFIG.monthsToShow = +gc.monthsToShow;
+      }
       try { localStorage.removeItem('nt-booked-cache'); } catch(e) {}
       loadBooked().then(function(map){ BOOKED = map; bookedReady = true; renderCal(); initChip(); });
     }
